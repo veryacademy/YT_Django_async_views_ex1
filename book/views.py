@@ -69,8 +69,8 @@ async def example(request):
             actions.append(asyncio.ensure_future(get_pokemon(session, url)))
 
         pokemon_res = await asyncio.gather(*actions)
-        for data in pokemon_res:
-            pokemon_data.append(data)
+        
+        pokemon_data = [data for data in pokemon_res]
 
     count = len(pokemon_data)
     total_time = time.time() - starting_time
